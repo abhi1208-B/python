@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS: Neon Arena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="scanlines"></div>
+
+    <header>
+        <h1 class="glitch" data-text="RPS: NEON ARENA">RPS: NEON ARENA</h1>
+        <div class="score-board">
+            <div class="score-box">
+                <span class="label">STREAK</span>
+                <span id="current-streak" class="value">0</span>
+            </div>
+            <div class="score-box">
+                <span class="label">BEST</span>
+                <span id="best-streak" class="value">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="arena">
+        <div class="game-area">
+            <div class="player-zone">
+                <h2>YOU</h2>
+                <div class="choices">
+                    <button class="choice-card" data-move="rock" id="btn-rock">
+                        <div class="icon">🪨</div>
+                        <div class="name">ROCK</div>
+                    </button>
+                    <button class="choice-card" data-move="paper" id="btn-paper">
+                        <div class="icon">📄</div>
+                        <div class="name">PAPER</div>
+                    </button>
+                    <button class="choice-card" data-move="scissors" id="btn-scissors">
+                        <div class="icon">✂️</div>
+                        <div class="name">SCISSORS</div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="vs-zone">
+                <div class="vs-text">VS</div>
+                <div id="result-message" class="result-text">CHOOSE YOUR WEAPON</div>
+            </div>
+
+            <div class="bot-zone">
+                <h2>BOT</h2>
+                <div class="bot-display" id="bot-display">
+                    <div class="icon">?</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="save-score-btn" class="neon-btn">SAVE SCORE</button>
+        </div>
+    </main>
+
+    <aside class="leaderboard-panel">
+        <h3>LEADERBOARD</h3>
+        <ul id="leaderboard-list">
+            <!-- Populated by JS -->
+            <li>Loading...</li>
+        </ul>
+    </aside>
+
+    <!-- Modal for saving score -->
+    <div id="save-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>ENTER YOUR TAG</h2>
+            <input type="text" id="player-name" placeholder="R0GUE_PL4YER" maxlength="12">
+            <div class="modal-actions">
+                <button id="cancel-save" class="neon-btn secondary">CANCEL</button>
+                <button id="confirm-save" class="neon-btn">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
